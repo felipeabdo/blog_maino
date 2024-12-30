@@ -34,6 +34,8 @@ gem 'bootstrap', '~> 5.3.3'
 #Font Awesome
 gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.9'
 
+#Rails i18n gem (Internationalization)
+gem "rails-i18n"
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: %i[ windows jruby ]
