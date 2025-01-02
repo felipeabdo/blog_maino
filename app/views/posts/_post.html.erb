@@ -18,7 +18,8 @@
 
   </div>
 
-    <%= link_to "Voltar para os posts", root_path, class:'ms-4 mb-2' %>
-
+    <% if request.path == post_path(post) %>
+      <%= link_to "Voltar para os posts", root_path, class:'ms-4 mb-2' %>
+    <% end %>
   
 </div>
