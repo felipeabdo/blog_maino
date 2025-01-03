@@ -29,4 +29,14 @@
 
 pt-BR:
 
+ kaminari:
+    page: "Página"
+    items: "itens"
+    previous: "Anterior"
+    next: "Próximo"
+    last: "Última"
+    first: "Primeira"
+    out_of_range: "Página não encontrada"
+    null: "Nenhum registro encontrado"
+
 
