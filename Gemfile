@@ -40,6 +40,9 @@ gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.9'
 #Rails i18n gem (Internationalization)
 gem "rails-i18n"
 
+#Kaminari gem (Pagination)
+gem "kaminari"
+
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: %i[ windows jruby ]
 
