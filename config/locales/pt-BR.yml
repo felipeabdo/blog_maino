@@ -28,8 +28,26 @@
 #       enabled: "ON"
 
 pt-BR:
+  activerecord:
+    models:
+      post: 'Post'
+      comment: 'Comentário'
+    attributes:
+      post:
+        title: 'Título'
+        author: 'Autor'
+        body: 'Post'
+      comment:
+        author: 'Autor'
+        body: 'Post'
+  
+  views:
+    posts:
+      new: "Novo post"
+   
+  
 
- kaminari:
+  kaminari:
     page: "Página"
     items: "itens"
     previous: "Anterior"
