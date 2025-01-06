@@ -1,6 +1,5 @@
 <p style="color: green"><%= notice %></p>
 
-
 <%= image_tag @post.image if @post.image.attached? %>
 <%= render @post %>
 
@@ -16,62 +15,55 @@
   </div>
 
   <div class="shadow-sm m-3 p-3 bg-light rounded">
+    <%= form_with model: @comment, url: comments_path, local: true do |form| %>
 
-    <%= form_with model: @comment, local: true do |form| %>
-
-      <%= form.hidden_field :post_id, value: @post.id %>
+      <%= form.hidden_field :post_id, value: @post.id %> 
 
       <div class="form-group">
-        <%= form.label :author, t('activerecord.attributes.comment.author'), style: "display: block" %>
-        <%= form.text_field :author, class: 'form-control' %>
+        <% if user_signed_in? %> 
+          <em>Por <strong><%= current_user.username %></strong></em>  
+        <% else %>
+          <em>Por <strong><%= "Anônimo" %></strong></em> 
+        <% end %>
       </div>
 
       <div class="form-group mb-4">
-        <%= form.label :body, t('activerecord.attributes.comment.body'), style: "display: block" %>
-        <%= form.text_area :body, class: 'form-control', rows: 3 %>
+        <%= form.label :content, t('activerecord.attributes.comment.body'), style: "display: block" %>
+        <%= form.text_area :content, class: 'form-control', rows: 3 %>
       </div>
 
       <div>
-        <%= form.submit "Enviar", class: 'btn btn-primary', data: { disable_with: 'Comenntando...' } %>
+        <%= form.submit "Enviar", class: 'btn btn-primary', data: { disable_with: 'Comentando...' } %>
       </div>
 
     <% end %>
-
   </div>
 
   <% @comments.each do |comment| %>
-
     <div class="shadow-sm m-3 p-3 bg-light rounded">
       <div class="row">
         <div class="col">
-          <strong><%= comment.author %></strong>
+          <strong><%= comment.user ? comment.user.username : comment.username %></strong>
         </div>
         <div class="col text-end">
-          <em data-bs-toggle="tooltip" data-bs-placement="top" title="<%= l comment.created_at, format: :long %>"> 
-            <%= time_ago_in_words comment.created_at %> atrás
+          <em data-bs-toggle="tooltip" data-bs-placement="top" title="<%= comment.created_at ? l(comment.created_at, format: :long) : 'Data não disponível' %>"> 
+            <%= time_ago_in_words(comment.created_at) %>
           </em>
+
+          <% if user_signed_in? && (current_user == comment.user || current_user == @post.user) %>
+            <%= link_to "Deletar", post_comment_path(@post, comment), method: :delete, data: { confirm: "Tem certeza que deseja deletar este comentário?" }, class: "btn btn-danger btn-sm" %>
+          <% end %>
+
         </div>
       </div>
 
       <hr>
 
-      <%= sanitize (comment.body.gsub("\n", "<br>")).html_safe %>
-
+      <%= sanitize(comment.content.gsub("\n", "<br>").html_safe) %> <!-- Exibe o conteúdo do comentário -->
     </div>
-
   <% end %>
-
-
 </div>
 
 <div>
-  <%
-=begin%>
- <%= link_to "Edit this post", edit_post_path(@post) %> |
   <%= link_to "Back to posts", posts_path %>
-
-  <%= button_to "Destroy this post", @post, method: :delete %> 
-<%
-=end%>
-  
 </div>
