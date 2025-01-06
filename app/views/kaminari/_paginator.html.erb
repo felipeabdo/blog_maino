@@ -1,0 +1,50 @@
+<%= paginator.render do -%>
+  <nav class="pagination" role="navigation" aria-label="pager">
+
+    <!-- Links das páginas -->
+    <% if current_page.first? %>
+      <%= link_to "<<", url_for(page: 1), class: 'first me-2' %>  
+      <%= link_to "<", url_for(page: current_page), class: 'previous me-2'%>
+      <%= page_tag (current_page) %>
+      <%= page_tag (current_page + 1) %>
+      <%= page_tag (current_page + 2) %>
+      <%= link_to ">", url_for(page: current_page + 1), class: 'next ms-2 me-2'%>
+
+
+    <% elsif current_page == total_pages - 1 || current_page == total_pages - 2 %>
+        <!-- Na última página, exibe as últimas páginas -->
+        <%= link_to "<<", url_for(page: 1), class: 'first me-2' %>  
+        <%= link_to "<", url_for(page: current_page - 1), class: 'previous me-2'%>   
+        <%= page_tag (total_pages - 2) %>
+        <%= page_tag (total_pages - 1) %>
+        <%= page_tag total_pages %>
+        <%= link_to ">", url_for(page: current_page + 1), class: 'next ms-2 me-2'%>
+
+
+    <% elsif current_page.last? %>
+      <!-- Na última página, exibe as últimas páginas -->
+      <%= link_to "<<", url_for(page: 1), class: 'first me-2' %>  
+      <%= link_to "<", url_for(page: current_page - 1), class: 'previous me-2'%>
+      <%= page_tag (total_pages - 2) %>
+      <%= page_tag (total_pages - 1) %>
+      <%= page_tag total_pages %>
+      <%= link_to ">", url_for(page: current_page), class: 'next ms-2 me-2'%>
+
+    <% else %>
+      <!-- Para outras páginas, exibe 2 números antes e 2 números depois -->
+      <%= link_to "<<", url_for(page: 1), class: 'first me-2' %>  
+      <%= link_to "<", url_for(page: current_page - 1), class: 'previous me-2'%>   
+      <%= page_tag (current_page) %>
+      <%= page_tag (current_page + 1) %>
+      <%= page_tag (current_page + 2) %>
+      <%= link_to ">", url_for(page: current_page + 1), class: 'next ms-2 me-2'%>
+    <% end %>
+
+    <!-- Link Next, mas só exibe quando não estivermos na última página -->
+    <%= link_to ">>", url_for(page: total_pages), class: 'page' %>
+
+
+  </nav>
+<% end -%>
+
+

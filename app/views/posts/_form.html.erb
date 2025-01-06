@@ -1,32 +1,27 @@
 <%= form_with(model: post) do |form| %>
-  <% if post.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
-
-      <ul>
-        <% post.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
 
   <div>
-    <%= form.label :title, style: "display: block" %>
-    <%= form.text_field :title %>
+    <%= form.label :image %>
+    <%= form.file_field :image %>
+  </div>
+
+  <div class="form-group">
+    <em>Por <%= post.user.username %></em>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :title, t('activerecord.attributes.post.title'), style: "display: block" %>
+    <%= form.text_field :title, class: 'form-control' %>
+  </div>
+
+
+  <div class="form-group mb-4">
+    <%= form.label :body, t('activerecord.attributes.post.body'), style: "display: block" %>
+    <%= form.text_area :body, class: 'form-control', rows: 15 %>
   </div>
 
   <div>
-    <%= form.label :author, style: "display: block" %>
-    <%= form.text_field :author %>
+    <%= form.submit "Enviar", class: 'btn btn-primary', data: { disable_with: 'Enviando...' } %>
   </div>
 
-  <div>
-    <%= form.label :body, style: "display: block" %>
-    <%= form.text_area :body %>
-  </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
 <% end %>

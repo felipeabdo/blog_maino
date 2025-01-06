@@ -7,5 +7,9 @@
 <hr>
 
 <div class="text-end">
+<% if user_signed_in? %>
   <%= link_to "Novo post", new_post_path, class: "btn btn-success" %>
+<% end %>
 </div>
+
+<%= paginate @posts %>
