@@ -7,6 +7,8 @@
 
     resources :comments, only: %i[create]
 
+    resources :tags, only: [:show]
+
     # resources :comments, only: %i[create, destroy]
     # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

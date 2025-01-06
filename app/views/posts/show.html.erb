@@ -64,6 +64,15 @@
   <% end %>
 </div>
 
+<div class="m-5">
+  <h4>Tags:</h4>
+  <p class="tags">
+    <% @post.tags.each do |tag| %>
+      <%= link_to tag.name, tag_path(tag), class: 'badge bg-secondary' %>
+    <% end %>
+  </p>
+</div>
+
 <div>
   <%= link_to "Back to posts", posts_path %>
 </div>

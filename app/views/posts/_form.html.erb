@@ -20,6 +20,11 @@
     <%= form.text_area :body, class: 'form-control', rows: 15 %>
   </div>
 
+  <div class="field">
+    <%= form.label :tag_list, "Tags (separadas por vírgulas)" %>
+    <%= form.text_field :tag_list, value: @post.tag_list, class: 'form-control' %>
+  </div>
+
   <div>
     <%= form.submit "Enviar", class: 'btn btn-primary', data: { disable_with: 'Enviando...' } %>
   </div>

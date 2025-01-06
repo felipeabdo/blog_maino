@@ -10,6 +10,16 @@
       <%= page_tag (current_page + 2) %>
       <%= link_to ">", url_for(page: current_page + 1), class: 'next ms-2 me-2'%>
 
+    <% elsif total_pages <= 2 %>
+        <% if current_page == 2 %>
+          <%= link_to "<<", url_for(page: 1), class: 'first me-2' %>  
+          <%= link_to "<", url_for(page: 1), class: 'previous me-2'%>
+          <%= page_tag (current_page - 1) %>
+          <%= page_tag (current_page) %>
+          <%= link_to "3", "#", class: 'ms-1' %>
+          <%= link_to ">", url_for(page: current_page), class: 'next ms-2 me-2'%>
+        <% end %>
+
 
     <% elsif current_page == total_pages - 1 || current_page == total_pages - 2 %>
         <!-- Na última página, exibe as últimas páginas -->
