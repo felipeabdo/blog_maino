@@ -5,15 +5,16 @@
     <%= form.file_field :image %>
   </div>
 
+<div class="form-group">
+  <em>Por <%= post.user.username %></em>
+
+</div>
+
   <div class="form-group">
     <%= form.label :title, t('activerecord.attributes.post.title'), style: "display: block" %>
     <%= form.text_field :title, class: 'form-control' %>
   </div>
 
-  <div class="form-group">
-    <%= form.label :author, t('activerecord.attributes.post.author'), style: "display: block" %>
-    <%= form.text_field :author, class: 'form-control' %>
-  </div>
 
   <div class="form-group mb-4">
     <%= form.label :body, t('activerecord.attributes.post.body'), style: "display: block" %>

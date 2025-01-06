@@ -1,25 +1,25 @@
-<div class="card bg-light mb-3">
-  <div class="card-body">
-    <h4> <%= link_to post.title, post %> </h4>
-    <div class="text-muted">
-      <em> Por <%= post.author %> (<%= I18n.l post.created_at, format: :long %>) </em>
+  <div class="card bg-light mb-3">
+    <div class="card-body">
+      <h4> <%= link_to post.title, post %> </h4>
+      <div class="text-muted">
+        <em> Por  <%= post.user.username %> (<%= I18n.l post.created_at, format: :long %>) </em>
+      </div>
+      <p class="mt-4"> <%= post.body.truncate(200) %> </p>
+      <p class="text-muted"><%= pluralize(post.comments.count, 'Comentário') %></p>
+
+
+      <% if request.path == post_path(post) %>
+        <%= link_to "Ler Artigo", post, class: 'btn btn-primary' %>
+        <%= link_to "Editar", edit_post_path(post), class: 'btn btn-secondary' %>
+        <%= link_to "Apagar", post, method: :delete, class: 'btn btn-danger', data: { confirm: 'Deseja apagar o post?' } %>
+      <% else %>
+        <%= link_to "Ler Artigo", post, class: 'btn btn-primary' %>
+      <% end %>
+
     </div>
-    <p class="mt-4"> <%= post.body.truncate(200) %> </p>
-    <p class="text-muted"><%= pluralize(post.comments.count, 'Comentário') %></p>
 
-
-    <% if request.path == post_path(post) %>
-      <%= link_to "Ler Artigo", post, class: 'btn btn-primary' %>
-      <%= link_to "Editar", edit_post_path(post), class: 'btn btn-secondary' %>
-      <%= link_to "Apagar", post, method: :delete, class: 'btn btn-danger', data: { confirm: 'Deseja apagar o post?' } %>
-    <% else %>
-      <%= link_to "Ler Artigo", post, class: 'btn btn-primary' %>
-    <% end %>
-
+      <% if request.path == post_path(post) %>
+        <%= link_to "Voltar para os posts", root_path, class:'ms-4 mb-2' %>
+      <% end %>
+    
   </div>
-
-    <% if request.path == post_path(post) %>
-      <%= link_to "Voltar para os posts", root_path, class:'ms-4 mb-2' %>
-    <% end %>
-  
-</div>
