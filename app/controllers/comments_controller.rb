@@ -36,7 +36,7 @@ class CommentsController < ApplicationController
     if @comment.present?
       puts "Comentário encontrado: #{@comment.id}"
       puts "Usuário atual: #{current_user.id}, Autor do comentário: #{@comment.user_id}, Autor do post: #{@post.user_id}"
-      if @comment.user_id == current_user.id || @post.user_id == current_user.id
+      if current_user.id == @comment.user_id || current_user.id == @post.user_id
         @comment.destroy
         puts "Comentário deletado: #{@comment.id}"
         redirect_to @post, notice: "Comentário deletado com sucesso."
