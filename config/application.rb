@@ -14,6 +14,9 @@ module BlogMaino
     config.i18n.default_locale = :"pt-BR"
     config.time_zone = "Brasilia"
 
+    # Use Sidekiq as backend of Active Job
+    config.active_job.queue_adapter = :sidekiq
+
     # Please, add to the `ignore` list any other `lib` subdirectories that do
     # not contain `.rb` files, or that should not be reloaded or eager loaded.
     # Common ones are `templates`, `generators`, or `middleware`, for example.

@@ -5,6 +5,11 @@
     <%= form.file_field :image %>
   </div>
 
+  <div class="field">
+    <%= form.label :file, "Upload de arquivo TXT" %>
+    <%= form.file_field :file, class: 'form-control' %>
+  </div>
+
   <div class="form-group">
     <em>Por <%= post.user.username %></em>
   </div>
