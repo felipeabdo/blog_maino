@@ -7,7 +7,12 @@
 
     resources :comments, only: %i[create]
 
-    resources :tags, only: [:show]
+    resources :tags, only: [ :show ]
+
+
+    require "sidekiq/web"
+    mount Sidekiq::Web => "/sidekiq"
+
 
     # resources :comments, only: %i[create, destroy]
     # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
