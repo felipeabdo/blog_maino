@@ -1,4 +1,8 @@
+<h1>Posts</h1>
 
+<% if @tag %>
+  <h2>Posts com a tag <%= @tag.name %></h2>
+<% end %>
 
 <% @posts.each do |post| %>
   <%= render post %>
@@ -7,9 +11,9 @@
 <hr>
 
 <div class="text-end">
-<% if user_signed_in? %>
-  <%= link_to "Novo post", new_post_path, class: "btn btn-success" %>
-<% end %>
+  <% if user_signed_in? %>
+    <%= link_to "Novo post", new_post_path, class: "btn btn-success" %>
+  <% end %>
 </div>
 
 <%= paginate @posts %>
