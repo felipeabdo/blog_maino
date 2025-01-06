@@ -5,10 +5,9 @@
     <%= form.file_field :image %>
   </div>
 
-<div class="form-group">
-  <em>Por <%= post.user.username %></em>
-
-</div>
+  <div class="form-group">
+    <em>Por <%= post.user.username %></em>
+  </div>
 
   <div class="form-group">
     <%= form.label :title, t('activerecord.attributes.post.title'), style: "display: block" %>
