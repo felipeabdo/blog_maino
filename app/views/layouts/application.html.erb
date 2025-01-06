@@ -23,6 +23,7 @@
     <% if user_signed_in? %>
       <div class="d-inline-flex bg-primary w-100 justify-content-between pe-5 ps-5">
         <h1 class=" text-center text-white"> LALALA </h1>
+        <%= link_to 'Editar Perfil', edit_user_registration_path, class: "text-white align-self-center" %>
         <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: "text-white align-self-center" %>
 
       </div>
