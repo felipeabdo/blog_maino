@@ -4,9 +4,8 @@
     resources :posts do
       resources :comments, only: %i[destroy]
     end
-    
+
     resources :comments, only: %i[create]
-    
 
     # resources :comments, only: %i[create, destroy]
     # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -21,4 +20,7 @@
 
     # Defines the root path route ("/")
     root "posts#index"
+
+    # Fallback route to redirect all invalid routes to the root path
+    match "*path" => redirect("/"), via: :all
   end
